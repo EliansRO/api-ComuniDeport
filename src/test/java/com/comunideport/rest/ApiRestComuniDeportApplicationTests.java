@@ -1,10 +1,10 @@
-package com.comunideport.api.apicomunideport;
+package com.comunideport.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiComunideportApplicationTests {
+class ApiRestComuniDeportApplicationTests {
 
 	@Test
 	void contextLoads() {
