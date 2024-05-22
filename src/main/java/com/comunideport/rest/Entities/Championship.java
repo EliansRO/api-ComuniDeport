@@ -5,11 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -29,16 +32,42 @@ public class Championship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "state")
     private String state;
+
+    @Column(name = "open_enrollment")
     private Boolean open_enrollment;
+
+    @Column(name = "start_date")
     private Date start_date;
+
+    @Column(name = "end_date")
     private Date end_date;
+
+    @Column(name = "sport")
     private String sport;
+
+    @Column(name = "id_sports_arena")
     private Integer id_sports_arena;
 
-    @OneToMany(mappedBy = "Championship", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(
+        mappedBy = "championshipList",
+        cascade = { CascadeType.PERSIST, CascadeType.MERGE }
+    )
     private List<Team> teamList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(
+        name = "id_sport_arena")
+    private SportArena sportArena;
 }

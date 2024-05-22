@@ -5,15 +5,13 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,17 +30,36 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "id_card")
     private Integer id_card;
-    private String Sex;
+
+    @Column(name = "sex")
+    private String sex;
+
+    @Column(name = "date_birth")
     private Date date_birth;
+
+    @Column(name = "health_status")
     private String health_status;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
-    @ManyToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "User_Team",
-        joinColumns = @JoinColumn(name = "id_user"),
-        inverseJoinColumns = @JoinColumn(name = "id_team"))
+    @ManyToMany(
+        cascade = { CascadeType.PERSIST, CascadeType.MERGE }, 
+        fetch = FetchType.LAZY
+    )
+    /*@JoinTable(
+        name = "User_Team",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "team_id")
+    )*/
     private List<Team> teamList = new ArrayList<>();
 }
