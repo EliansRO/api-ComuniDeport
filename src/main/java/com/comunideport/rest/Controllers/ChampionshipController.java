@@ -29,6 +29,7 @@ public class ChampionshipController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id){
+
         Optional<Championship> championshipOptional = championshipService.findById(id);
 
         if(championshipOptional.isPresent()){
@@ -58,7 +59,7 @@ public class ChampionshipController {
     @GetMapping("/findAll")
     public ResponseEntity<?> findAll(){
 
-        List<ChampionshipDTO> championshipList = championshipService.findAll()
+        List<ChampionshipDTO> championshipDTOList = championshipService.findAll()
             .stream()
             .map(championship -> ChampionshipDTO.builder()
                 .id(championship.getId())
@@ -73,10 +74,11 @@ public class ChampionshipController {
                 .id_sports_arena(championship.getId_sports_arena())
                 .teamList(championship.getTeamList())
                 .sportArena(championship.getSportArena())
-                .build())
+                .build()
+            )
             .toList();
 
-        return ResponseEntity.ok(championshipList);
+        return ResponseEntity.ok(championshipDTOList);
     }
 
     @PostMapping("/save")
@@ -88,7 +90,7 @@ public class ChampionshipController {
 
         championshipService.save(Championship.builder()
             //COMPLETAR!!
-            .name(null)
+            .name(championshipDTO.getName())
             .build()
         );
 
@@ -102,7 +104,7 @@ public class ChampionshipController {
 
         if(championshipOptional.isPresent()){
             Championship championship = championshipOptional.get();
-            championship.setName((championshipDTO.getName()));
+            championship.setName(championshipDTO.getName());
             championshipService.save(championship);
 
             return ResponseEntity.ok("Existoso!!"/*Editar luego*/);
