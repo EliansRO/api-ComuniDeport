@@ -1,42 +1,42 @@
-package com.comunideport.rest.Persistence.Impl;
+package com.comunideport.rest.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Team;
 import com.comunideport.rest.Persistence.ITeamDAO;
-import com.comunideport.rest.Repository.TeamRepository;
+import com.comunideport.rest.Service.ITeamService;
 
-@Component
-public class TeamDAOImpl implements ITeamDAO {
+@Service
+public class TeamServiceImpl implements ITeamService {
 
     @Autowired
-    private TeamRepository teamRepository;
+    private ITeamDAO iTeamDAO;
 
     @Override
     public void deleteById(Integer id) {
         // TODO Auto-generated method stub
-        teamRepository.deleteById(id);
+        iTeamDAO.deleteById(id);
     }
 
     @Override
     public List<Team> findAll() {
         // TODO Auto-generated method stub
-        return (List<Team>) teamRepository.findAll();
+        return iTeamDAO.findAll();
     }
 
     @Override
     public Optional<Team> findById(Integer id) {
         // TODO Auto-generated method stub
-        return teamRepository.findById(id);
+        return iTeamDAO.findById(id);
     }
 
     @Override
     public void save(Team team) {
         // TODO Auto-generated method stub
-        teamRepository.save(team);
-    }   
+        iTeamDAO.save(team);
+    }
 }

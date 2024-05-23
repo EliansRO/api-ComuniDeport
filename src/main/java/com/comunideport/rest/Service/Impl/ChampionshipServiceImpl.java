@@ -1,42 +1,42 @@
-package com.comunideport.rest.Persistence.Impl;
+package com.comunideport.rest.Service.Impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Championship;
 import com.comunideport.rest.Persistence.IChampionshipDAO;
-import com.comunideport.rest.Repository.ChampionshipRepository;
+import com.comunideport.rest.Service.IChampionshipService;
 
-@Component
-public class ChampionshipDAOImpl implements IChampionshipDAO {
-
+@Service
+public class ChampionshipServiceImpl implements IChampionshipService{
+    
     @Autowired
-    private ChampionshipRepository championshipRepository;
+    private IChampionshipDAO iChampionshipDAO;
 
     @Override
     public void deleteById(Integer id) {
         // TODO Auto-generated method stub
-        championshipRepository.deleteById(id);
+        iChampionshipDAO.deleteById(id);
     }
 
     @Override
     public List<Championship> findAll() {
         // TODO Auto-generated method stub
-        return (List<Championship>) championshipRepository.findAll();
+        return iChampionshipDAO.findAll();
     }
 
     @Override
     public Optional<Championship> findById(Integer id) {
         // TODO Auto-generated method stub
-        return championshipRepository.findById(id);
+        return iChampionshipDAO.findById(id);
     }
 
     @Override
     public void save(Championship championship) {
         // TODO Auto-generated method stub
-        championshipRepository.save(championship);
+        iChampionshipDAO.save(championship);
     }
 }

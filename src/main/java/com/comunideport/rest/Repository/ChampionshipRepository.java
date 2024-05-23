@@ -1,4 +1,4 @@
-package com.comunideport.rest.Repositories;
+package com.comunideport.rest.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
