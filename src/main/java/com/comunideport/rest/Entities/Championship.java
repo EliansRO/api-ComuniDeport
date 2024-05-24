@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,9 +60,9 @@ public class Championship {
     @Column(name = "id_sports_arena")
     private Integer id_sports_arena;
 
+    @JsonIgnore
     @ManyToMany(
-        mappedBy = "championshipList",
-        cascade = { CascadeType.PERSIST, CascadeType.MERGE }
+        mappedBy = "championshipList"
     )
     private List<Team> teamList = new ArrayList<>();
 

@@ -3,8 +3,12 @@ package com.comunideport.rest.Entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,12 +40,17 @@ public class Team {
     @Column(name = "id_card")
     private Integer id_card;
 
+    @JsonIgnore
     @ManyToMany(
         mappedBy = "teamList"
     )
     private List<User> userList = new ArrayList<>();
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(
+        cascade = { CascadeType.PERSIST, CascadeType.MERGE }, 
+        fetch = FetchType.LAZY
+    )
     @JoinTable( // Optional, remove if no additional columns in the join table
             name = "Championship_Team", // Custom join table name (optional)
             joinColumns = @JoinColumn(name = "team_id"),

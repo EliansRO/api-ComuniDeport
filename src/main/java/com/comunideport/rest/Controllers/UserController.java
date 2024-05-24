@@ -101,7 +101,6 @@ public class UserController {
 
         if (id != null) {
             userService.deleteById(id);
-
             return ResponseEntity.ok("Exitoso!!" /* EDITAR LUEGO */);
         }
 
