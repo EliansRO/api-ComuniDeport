@@ -1,20 +1,12 @@
 package com.comunideport.rest.Entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,8 +20,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "Sport")
+public class Sport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -38,7 +30,7 @@ public class User {
     private String name;
 
     @Column(name = "id_card")
-    private Integer id_card;
+    private String id_card;
 
     @Column(name = "sex")
     private String sex;
@@ -47,7 +39,7 @@ public class User {
     private Date date_birth;
 
     @Column(name = "health_status")
-    private String health_status;
+    private String healt_status;
 
     @Column(name = "email")
     private String email;
@@ -55,14 +47,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(
-        cascade = { CascadeType.PERSIST, CascadeType.MERGE }, 
-        fetch = FetchType.LAZY
-    )
-    @JoinTable(
-        name = "Registered", // Nombre personalizado de la tabla de unión (opcional)
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "team_id")
-    )
-    private List<Team> teamList = new ArrayList<>();
+    @Column(name = "id_championship_board")
+    private Integer id_championship_board;
+    
 }
