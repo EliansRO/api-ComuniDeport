@@ -1,10 +1,18 @@
 package com.comunideport.rest.Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,4 +40,19 @@ public class Registration {
 
     @Column(name = "id_fixture")
     private Integer id_fixture;
+
+    // One-to-Many relationship with TeaM
+    @JsonIgnore
+    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Team> teamList = new ArrayList<>();
+
+    // One-to-Many relationship with Fixture
+    @JsonIgnore
+    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Fixture> fixtureList = new ArrayList<>();
+
+    // One-to-Many relationship with Team
+    @JsonIgnore
+    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Championship> championshipList = new ArrayList<>();
 }

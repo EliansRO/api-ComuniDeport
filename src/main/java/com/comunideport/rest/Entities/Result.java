@@ -1,12 +1,16 @@
 package com.comunideport.rest.Entities;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,30 +30,22 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "id_card")
-    private Integer id_card;
-
-    @Column(name = "sex")
-    private String sex;
-
-    @Column(name = "date_birth")
-    private Date date_birth;
-
-    @Column(name = "health_status")
-    private String health_status;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "team_local")
     private Integer team_local;
 
     @Column(name = "team_visit")
     private Integer team_visit;
+
+    @Column(name = "score_local")
+    private Integer score_local;
+
+    @Column(name = "score_visit")
+    private Integer score_visit;
+
+    @OneToMany(
+        mappedBy = "resultList",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY
+    ) 
+    private List<Fixture> fixtureList;
 }

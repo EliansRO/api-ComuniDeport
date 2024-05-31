@@ -18,25 +18,21 @@ public class UserDAOImpl implements IUserDAO{
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
         userRepository.deleteById(id);
     }
 
     @Override
     public List<User> findAll() {
-        // TODO Auto-generated method stub
         return (List<User>) userRepository.findAll();
     }
 
     @Override
     public Optional<User> findById(Integer id) {
-        // TODO Auto-generated method stub
         return userRepository.findById(id);
     }
 
     @Override
     public void save(User user) {
-        // TODO Auto-generated method stub
         userRepository.save(user);
     }
 }

@@ -18,25 +18,21 @@ public class TeamDAOImpl implements ITeamDAO {
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
         teamRepository.deleteById(id);
     }
 
     @Override
     public List<Team> findAll() {
-        // TODO Auto-generated method stub
         return (List<Team>) teamRepository.findAll();
     }
 
     @Override
     public Optional<Team> findById(Integer id) {
-        // TODO Auto-generated method stub
         return teamRepository.findById(id);
     }
 
     @Override
     public void save(Team team) {
-        // TODO Auto-generated method stub
         teamRepository.save(team);
     }   
 }

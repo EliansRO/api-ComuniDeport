@@ -19,31 +19,26 @@ public class SportArenaDAOImpl implements ISportArenaDAO{
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
         sportArenaRepository.deleteById(id);
     }
 
     @Override
     public List<SportArena> findAll() {
-        // TODO Auto-generated method stub
         return (List<SportArena>) sportArenaRepository.findAll();
     }
 
     @Override
     public List<SportArena> findByHoursInRange(LocalTime minHours, LocalTime maxHours) {
-        // TODO Auto-generated method stub
         return (List<SportArena>) sportArenaRepository.findByHoursBetweenSportArenas(minHours, maxHours);
     }
 
     @Override
     public Optional<SportArena> findById(Integer id) {
-        // TODO Auto-generated method stub
         return sportArenaRepository.findById(id);
     }
 
     @Override
     public void save(SportArena sportArena) {
-        // TODO Auto-generated method stub
         sportArenaRepository.save(sportArena);
     }
 }

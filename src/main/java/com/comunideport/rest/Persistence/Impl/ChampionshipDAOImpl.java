@@ -18,25 +18,21 @@ public class ChampionshipDAOImpl implements IChampionshipDAO {
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
         championshipRepository.deleteById(id);
     }
 
     @Override
     public List<Championship> findAll() {
-        // TODO Auto-generated method stub
         return (List<Championship>) championshipRepository.findAll();
     }
 
     @Override
     public Optional<Championship> findById(Integer id) {
-        // TODO Auto-generated method stub
         return championshipRepository.findById(id);
     }
 
     @Override
     public void save(Championship championship) {
-        // TODO Auto-generated method stub
         championshipRepository.save(championship);
     }
 }

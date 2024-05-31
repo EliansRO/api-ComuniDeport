@@ -3,6 +3,8 @@ package com.comunideport.rest.Entities;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,10 +47,11 @@ public class SportArena {
     @Column(name = "hours")
     private LocalTime hours;
 
+    @JsonIgnore
     @OneToMany(
-        mappedBy = "sportArena",
+        mappedBy = "sportArenaList",
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY
     ) 
-    private List<Championship> championships;
+    private List<Fixture> fixtureList;
 }

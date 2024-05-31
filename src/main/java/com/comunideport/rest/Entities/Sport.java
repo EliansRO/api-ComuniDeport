@@ -1,12 +1,19 @@
 package com.comunideport.rest.Entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,25 +36,16 @@ public class Sport {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "id_card")
-    private String id_card;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "sex")
-    private String sex;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "championship_id")
+    private List<Championship> championshipList = new ArrayList<>();
 
-    @Column(name = "date_birth")
-    private Date date_birth;
-
-    @Column(name = "health_status")
-    private String healt_status;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "id_championship_board")
-    private Integer id_championship_board;
-    
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "championshipBoard_id")
+    private List<ChampionshipBoard> championshipBoardList = new ArrayList<>();
 }

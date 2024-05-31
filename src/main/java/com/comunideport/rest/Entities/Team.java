@@ -15,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,24 +38,40 @@ public class Team {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "name")
+    private String description;
+
+    @Column(name = "name")
+    private Integer foundation_year;
+
+    @Column(name = "name")
+    private String home_ground;
+
+    @Column(name = "name")
+    private String city;
+
+    @Column(name = "name")
+    private String country;
+
     @Column(name = "id_card")
-    private Integer id_card;
+    private String logo_url;
+
+    @Column(name = "id_card")
+    private String contact_email;
+
+    @Column(name = "id_card")
+    private String contact_phone;
+
+    @Column(name = "id_card")
+    private String website_url;
 
     @JsonIgnore
-    @ManyToMany(
-        mappedBy = "teamList"
-    )
-    private List<User> userList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "registered_id")
+    private List<Registered> registeredList = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToMany(
-        cascade = { CascadeType.PERSIST, CascadeType.MERGE }, 
-        fetch = FetchType.LAZY
-    )
-    @JoinTable( // Optional, remove if no additional columns in the join table
-            name = "Championship_Team", // Custom join table name (optional)
-            joinColumns = @JoinColumn(name = "team_id"),
-            inverseJoinColumns = @JoinColumn(name = "championship_id")
-    )
-    private List<Championship> championshipList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "registration_id")
+    private List<Registration> registrationList = new ArrayList<>();
 }   
