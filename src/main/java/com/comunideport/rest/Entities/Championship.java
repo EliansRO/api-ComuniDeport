@@ -61,7 +61,7 @@ public class Championship {
 
     @JsonIgnore
     @OneToMany(
-        mappedBy = "championshipRegistrationList",
+        mappedBy = "championshipList",
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY
     )

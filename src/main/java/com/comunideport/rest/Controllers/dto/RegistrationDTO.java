@@ -20,12 +20,6 @@ public class RegistrationDTO {
 
     private Integer id;
 
-    private Integer championship_id;
-
-    private Integer team_id;
-
-    private Integer id_fixture;
-
     private List<Team> teamList = new ArrayList<>();
 
     private List<Fixture> fixtureList = new ArrayList<>();

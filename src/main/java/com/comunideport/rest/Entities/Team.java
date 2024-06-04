@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -68,7 +69,6 @@ public class Team {
     private List<Registered> registeredList = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "registration_id")
-    private List<Registration> registrationTeamList = new ArrayList<>();
+    @ManyToMany(mappedBy = "teamList")
+    private List<Registration> registrationList = new ArrayList<>();
 }   
