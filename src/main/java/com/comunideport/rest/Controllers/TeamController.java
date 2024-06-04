@@ -39,9 +39,13 @@ public class TeamController {
             TeamDTO teamDTO = TeamDTO.builder()
                 .id(team.getId())
                 .name(team.getName())
-                .id_card(team.getId_card())
-                .userList(team.getUserList())
-                .championshipList(team.getChampionshipList())
+                .foundation_year(team.getFoundation_year())
+                .home_ground(team.getHome_ground())
+                .city(team.getCity())
+                .country(team.getCountry())
+                .logo_url(team.getLogo_url())
+                .contact_email(team.getContact_email())
+                .website_url(team.getWebsite_url())
                 .build();
             
             return ResponseEntity.ok(teamDTO);
@@ -58,9 +62,13 @@ public class TeamController {
             .map(team -> TeamDTO.builder()
                 .id(team.getId())
                 .name(team.getName())
-                .id_card(team.getId_card())
-                .userList(team.getUserList())
-                .championshipList(team.getChampionshipList())
+                .foundation_year(team.getFoundation_year())
+                .home_ground(team.getHome_ground())
+                .city(team.getCity())
+                .country(team.getCountry())
+                .logo_url(team.getLogo_url())
+                .contact_email(team.getContact_email())
+                .website_url(team.getWebsite_url())
                 .build()
             )
             .toList();
@@ -77,8 +85,15 @@ public class TeamController {
         }
 
         teamService.save(Team.builder()
+            .id(teamDTO.getId())
             .name(teamDTO.getName())
-            .id_card(teamDTO.getId_card())
+            .foundation_year(teamDTO.getFoundation_year())
+            .home_ground(teamDTO.getHome_ground())
+            .city(teamDTO.getCity())
+            .country(teamDTO.getCountry())
+            .logo_url(teamDTO.getLogo_url())
+            .contact_email(teamDTO.getContact_email())
+            .website_url(teamDTO.getWebsite_url())
             .build()
         );
 
@@ -93,8 +108,15 @@ public class TeamController {
         if(teamOptional.isPresent()){
             Team team = teamOptional.get();
             team.setName(teamDTO.getName());
-            team.setId_card(teamDTO.getId_card());
-
+            team.setDescription(teamDTO.getDescription());
+            team.setFoundation_year(teamDTO.getFoundation_year());
+            team.setHome_ground(teamDTO.getHome_ground());
+            team.setCity(teamDTO.getCity());
+            team.setCountry(teamDTO.getCountry());
+            team.setLogo_url(teamDTO.getLogo_url());
+            team.setContact_email(teamDTO.getContact_email());
+            team.setContact_phone(teamDTO.getContact_phone());
+            team.setWebsite_url(teamDTO.getWebsite_url());
             teamService.save(team);
 
             return ResponseEntity.ok("Existoso!!"/*Editar luego*/);

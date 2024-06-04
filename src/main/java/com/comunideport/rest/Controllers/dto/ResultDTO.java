@@ -1,7 +1,5 @@
 package com.comunideport.rest.Controllers.dto;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.comunideport.rest.Entities.Fixture;
@@ -15,19 +13,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SportArenaDTO {
+public class ResultDTO {
 
     private Integer id;
 
-    private String name;
+    private Integer team_local;
 
-    private Integer capacity;
+    private Integer team_visit;
 
-    private Float size;
+    private Integer score_local;
 
-    private Boolean state;
+    private Integer score_visit;
 
-    private LocalTime hours;
-
-    private List<Fixture> fixtureList = new ArrayList<>();
+    private List<Fixture> fixtureList;
 }

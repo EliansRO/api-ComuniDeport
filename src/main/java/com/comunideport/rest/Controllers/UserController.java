@@ -43,7 +43,14 @@ public class UserController {
                 .health_status(user.getHealth_status())
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .teamList(user.getTeamList())
+                .phone(user.getPhone())
+                .address(user.getAddress())
+                .city(user.getCity())
+                .country(user.getCountry())
+                .profile_picture_url(user.getProfile_picture_url())
+                .role(user.getRole())
+                .date_joined(user.getDate_joined())
+                .last_login(user.getLast_login())
                 .build();
 
                 return ResponseEntity.ok(userDTO);
@@ -66,7 +73,14 @@ public class UserController {
                 .health_status(user.getHealth_status())
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .teamList(user.getTeamList())
+                .phone(user.getPhone())
+                .address(user.getAddress())
+                .city(user.getCity())
+                .country(user.getCountry())
+                .profile_picture_url(user.getProfile_picture_url())
+                .role(user.getRole())
+                .date_joined(user.getDate_joined())
+                .last_login(user.getLast_login())
                 .build()
             )
             .toList();
@@ -90,6 +104,14 @@ public class UserController {
             .health_status(userDTO.getHealth_status())
             .email(userDTO.getEmail())
             .password(userDTO.getPassword())
+            .phone(userDTO.getPhone())
+            .address(userDTO.getAddress())
+            .city(userDTO.getCity())
+            .country(userDTO.getCountry())
+            .profile_picture_url(userDTO.getProfile_picture_url())
+            .role(userDTO.getRole())
+            .date_joined(userDTO.getDate_joined())
+            .last_login(userDTO.getLast_login())
             .build()
         );
 

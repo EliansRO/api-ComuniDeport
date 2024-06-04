@@ -7,5 +7,4 @@ import com.comunideport.rest.Entities.Registered;
 
 @Repository
 public interface RegisteredRepository extends CrudRepository<Registered,Integer>{
-
 }

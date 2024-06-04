@@ -1,10 +1,8 @@
 package com.comunideport.rest.Controllers.dto;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import com.comunideport.rest.Entities.Registration;
 import com.comunideport.rest.Entities.Sport;
 
 import lombok.AllArgsConstructor;
@@ -16,27 +14,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ChampionshipDTO {
+public class ChampionshipBoardDTO {
 
     private Integer id;
-
+    
     private String name;
 
     private String description;
 
-    private String phone;
+    private String icon_url;
 
-    private String state;
-
-    private Boolean open_enrollment;
-
-    private Date start_date;
-
-    private Date end_date;
-
-    private String sport;
-
-    private List<Registration> registrationList = new ArrayList<>();
+    private Float points;
 
     private List<Sport> sportList = new ArrayList<>();
 }

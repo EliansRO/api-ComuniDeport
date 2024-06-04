@@ -45,6 +45,6 @@ public class ChampionshipBoard {
     private Float points;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "championshipBoardList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Sport> sportList = new ArrayList<>();
+    @OneToMany(mappedBy = "championshipBoardSportList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Sport> sportChampionshipBoardList = new ArrayList<>();
 }

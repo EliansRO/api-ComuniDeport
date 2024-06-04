@@ -1,10 +1,11 @@
 package com.comunideport.rest.Controllers.dto;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.comunideport.rest.Entities.Championship;
 import com.comunideport.rest.Entities.Fixture;
+import com.comunideport.rest.Entities.Team;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,19 +16,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SportArenaDTO {
+public class RegistrationDTO {
 
     private Integer id;
 
-    private String name;
+    private Integer championship_id;
 
-    private Integer capacity;
+    private Integer team_id;
 
-    private Float size;
+    private Integer id_fixture;
 
-    private Boolean state;
-
-    private LocalTime hours;
+    private List<Team> teamList = new ArrayList<>();
 
     private List<Fixture> fixtureList = new ArrayList<>();
+
+    private List<Championship> championshipList = new ArrayList<>();
+
 }

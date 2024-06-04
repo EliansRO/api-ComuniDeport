@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,8 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -38,31 +35,31 @@ public class Team {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "name")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "name")
+    @Column(name = "foundation_year")
     private Integer foundation_year;
 
-    @Column(name = "name")
+    @Column(name = "home_ground")
     private String home_ground;
 
-    @Column(name = "name")
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "name")
+    @Column(name = "country")
     private String country;
 
-    @Column(name = "id_card")
+    @Column(name = "logo_url")
     private String logo_url;
 
-    @Column(name = "id_card")
+    @Column(name = "contact_email")
     private String contact_email;
 
-    @Column(name = "id_card")
+    @Column(name = "contact_phone")
     private String contact_phone;
 
-    @Column(name = "id_card")
+    @Column(name = "website_url")
     private String website_url;
 
     @JsonIgnore
@@ -73,5 +70,5 @@ public class Team {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "registration_id")
-    private List<Registration> registrationList = new ArrayList<>();
+    private List<Registration> registrationTeamList = new ArrayList<>();
 }   

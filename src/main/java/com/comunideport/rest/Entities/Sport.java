@@ -42,10 +42,10 @@ public class Sport {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "championship_id")
-    private List<Championship> championshipList = new ArrayList<>();
+    private List<Championship> championshipSportList = new ArrayList<>();
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "championshipBoard_id")
-    private List<ChampionshipBoard> championshipBoardList = new ArrayList<>();
+    private List<ChampionshipBoard> championshipBoardSportList = new ArrayList<>();
 }

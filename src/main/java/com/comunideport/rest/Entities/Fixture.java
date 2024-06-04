@@ -2,7 +2,6 @@ package com.comunideport.rest.Entities;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,5 +52,5 @@ public class Fixture {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "registration_id")
-    private List<Registration> registrationList = new ArrayList<>();
+    private List<Registration> registrationFixtureList = new ArrayList<>();
 }

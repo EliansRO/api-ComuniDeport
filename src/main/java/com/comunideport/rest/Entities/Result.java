@@ -1,6 +1,5 @@
 package com.comunideport.rest.Entities;
 
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;

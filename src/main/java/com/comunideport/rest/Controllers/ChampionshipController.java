@@ -45,9 +45,6 @@ public class ChampionshipController {
                 .start_date(championship.getStart_date())
                 .end_date(championship.getEnd_date())
                 .sport(championship.getSport())
-                .id_sports_arena(championship.getId_sports_arena())
-                .teamList(championship.getTeamList())
-                .sportArena(championship.getSportArena())
                 .build();
             
             return ResponseEntity.ok(championshipDTO);
@@ -71,9 +68,6 @@ public class ChampionshipController {
                 .start_date(championship.getStart_date())
                 .end_date(championship.getEnd_date())
                 .sport(championship.getSport())
-                .id_sports_arena(championship.getId_sports_arena())
-                .teamList(championship.getTeamList())
-                .sportArena(championship.getSportArena())
                 .build()
             )
             .toList();

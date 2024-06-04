@@ -1,10 +1,11 @@
 package com.comunideport.rest.Controllers.dto;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.comunideport.rest.Entities.Team;
+import com.comunideport.rest.Entities.Registered;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +34,21 @@ public class UserDTO {
 
     private String password;
 
-    private List<Team> teamList = new ArrayList<>();
+    private String phone;
+
+    private String address;
+
+    private String city;
+
+    private String country;
+
+    private String profile_picture_url;
+
+    private String role;
+
+    private LocalTime date_joined;
+
+    private LocalTime last_login;
+
+    private List<Registered> registeredList = new ArrayList<>();
 }

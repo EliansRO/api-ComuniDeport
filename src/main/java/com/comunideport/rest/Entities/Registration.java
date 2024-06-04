@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -43,16 +45,17 @@ public class Registration {
 
     // One-to-Many relationship with TeaM
     @JsonIgnore
-    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "registrationTeamList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Team> teamList = new ArrayList<>();
 
     // One-to-Many relationship with Fixture
     @JsonIgnore
-    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "registrationFixtureList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Fixture> fixtureList = new ArrayList<>();
 
     // One-to-Many relationship with Team
     @JsonIgnore
-    @OneToMany(mappedBy = "registrationList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Championship> championshipList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "championship_id")
+    private List<Championship> championshipRegistrationList = new ArrayList<>();
 }

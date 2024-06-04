@@ -3,8 +3,8 @@ package com.comunideport.rest.Controllers.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.comunideport.rest.Entities.Championship;
-import com.comunideport.rest.Entities.User;
+import com.comunideport.rest.Entities.Registered;
+import com.comunideport.rest.Entities.Registration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +21,25 @@ public class TeamDTO {
 
     private String name;
 
-    private Integer id_card;
+    private String description;
 
-    private List<User> userList = new ArrayList<>();
+    private Integer foundation_year;
 
-    private List<Championship> championshipList = new ArrayList<>();
+    private String home_ground;
+
+    private String city;
+
+    private String country;
+
+    private String logo_url;
+
+    private String contact_email;
+
+    private String contact_phone;
+
+    private String website_url;
+
+    private List<Registered> registeredList = new ArrayList<>();
+
+    private List<Registration> registrationList = new ArrayList<>();
 }

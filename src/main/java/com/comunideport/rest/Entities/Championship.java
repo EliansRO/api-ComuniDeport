@@ -14,7 +14,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -60,15 +59,15 @@ public class Championship {
     @Column(name = "sport")
     private String sport;
 
-    @Column(name = "id_sports_arena")
-    private Integer id_sports_arena;
-
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "registration_id")
+    @OneToMany(
+        mappedBy = "championshipRegistrationList",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY
+    )
     private List<Registration> registrationList = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "championshipList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "championshipSportList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Sport> sportList = new ArrayList<>();
 }
