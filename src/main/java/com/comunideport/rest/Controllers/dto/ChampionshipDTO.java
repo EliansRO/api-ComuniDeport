@@ -34,9 +34,7 @@ public class ChampionshipDTO {
 
     private Date end_date;
 
-    private String sport;
-
     private List<Registration> registrationList = new ArrayList<>();
 
-    private List<Sport> sportList = new ArrayList<>();
+    private Sport sport;
 }

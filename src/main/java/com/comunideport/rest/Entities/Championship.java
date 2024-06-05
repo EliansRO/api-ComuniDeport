@@ -56,18 +56,12 @@ public class Championship {
     @Column(name = "end_date")
     private Date end_date;
 
-    @Column(name = "sport")
-    private String sport;
-
     @JsonIgnore
-    @OneToMany(
-        mappedBy = "championshipList",
-        cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY
-    )
+    @OneToMany(mappedBy = "championship", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Registration> registrationList = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "championshipSportList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Sport> sportList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "sport_id")
+    private Sport sport;
 }

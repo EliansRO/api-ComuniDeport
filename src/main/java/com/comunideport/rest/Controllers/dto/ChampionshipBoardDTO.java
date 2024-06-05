@@ -1,8 +1,5 @@
 package com.comunideport.rest.Controllers.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.comunideport.rest.Entities.Sport;
 
 import lombok.AllArgsConstructor;
@@ -26,5 +23,5 @@ public class ChampionshipBoardDTO {
 
     private Float points;
 
-    private List<Sport> sportList = new ArrayList<>();
+    private Sport sport;
 }

@@ -44,7 +44,6 @@ public class ChampionshipController {
                 .open_enrollment(championship.getOpen_enrollment())
                 .start_date(championship.getStart_date())
                 .end_date(championship.getEnd_date())
-                .sport(championship.getSport())
                 .build();
             
             return ResponseEntity.ok(championshipDTO);
@@ -67,7 +66,6 @@ public class ChampionshipController {
                 .open_enrollment(championship.getOpen_enrollment())
                 .start_date(championship.getStart_date())
                 .end_date(championship.getEnd_date())
-                .sport(championship.getSport())
                 .build()
             )
             .toList();

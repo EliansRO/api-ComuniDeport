@@ -23,9 +23,9 @@ public class FixtureDTO {
 
     private LocalTime match_date;
 
-    private List<SportArena> sportArenaList;
+    private SportArena sportArena;
 
-    private List<Result> resultList;
+    private Result result;
 
     private List<Registration> registrationList = new ArrayList<>();
 }

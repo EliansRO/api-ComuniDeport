@@ -1,8 +1,5 @@
 package com.comunideport.rest.Controllers.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.comunideport.rest.Entities.Championship;
 import com.comunideport.rest.Entities.Fixture;
 import com.comunideport.rest.Entities.Team;
@@ -20,10 +17,10 @@ public class RegistrationDTO {
 
     private Integer id;
 
-    private List<Team> teamList = new ArrayList<>();
+    private Team team;
 
-    private List<Fixture> fixtureList = new ArrayList<>();
+    private Fixture fixture;
 
-    private List<Championship> championshipList = new ArrayList<>();
+    private Championship championship;
 
 }

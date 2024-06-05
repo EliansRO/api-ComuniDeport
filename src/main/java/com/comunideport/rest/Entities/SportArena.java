@@ -49,10 +49,6 @@ public class SportArena {
     private LocalTime hours;
 
     @JsonIgnore
-    @OneToMany(
-        mappedBy = "sportArenaList",
-        cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY
-    ) 
+    @OneToMany(mappedBy = "sportArena", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Fixture> fixtureList = new ArrayList<>();
 }
