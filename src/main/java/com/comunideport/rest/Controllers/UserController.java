@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,8 +89,8 @@ public class UserController {
         return ResponseEntity.ok(userDTOList);
     }
 
-    @PostMapping("/save/{id}")
-    public ResponseEntity<?> save(@RequestBody UserDTO userDTO, @PathVariable Integer id) throws URISyntaxException{
+    @PostMapping("/save")
+    public ResponseEntity<?> save(@RequestBody UserDTO userDTO) throws URISyntaxException{
 
         if(userDTO.getName().isBlank()){
             return ResponseEntity.badRequest().build();
@@ -116,6 +117,35 @@ public class UserController {
         );
 
         return ResponseEntity.created(new URI("/api/user/save")).build();
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO userDTO, @PathVariable Integer id) throws URISyntaxException{
+
+        Optional<User> userOptional = userService.findById(id);
+
+        if(userOptional.isPresent()){
+            User user = userOptional.get();
+                user.setName(userDTO.getName());
+                user.setId_card(userDTO.getId_card());
+                user.setSex(userDTO.getSex());
+                user.setDate_birth(userDTO.getDate_birth());
+                user.setHealth_status(userDTO.getHealth_status());
+                user.setEmail(userDTO.getEmail());
+                user.setPassword(userDTO.getPassword());
+                user.setPhone(userDTO.getPhone());
+                user.setAddress(userDTO.getAddress());
+                user.setCity(userDTO.getCity());
+                user.setCountry(userDTO.getCountry());
+                user.setProfile_picture_url(userDTO.getProfile_picture_url());
+                user.setRole(userDTO.getRole());
+                user.setDate_joined(userDTO.getDate_joined());
+                user.setLast_login(userDTO.getLast_login());
+            userService.save(user);
+            return ResponseEntity.ok("Existoso!!"/*Editar luego*/);
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/delete/{id}")

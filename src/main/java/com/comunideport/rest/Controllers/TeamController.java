@@ -20,7 +20,6 @@ import com.comunideport.rest.Entities.Team;
 import com.comunideport.rest.Service.ITeamService;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 @RequestMapping("/api/team")
 public class TeamController {
@@ -79,8 +78,7 @@ public class TeamController {
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody TeamDTO teamDTO) throws URISyntaxException{
 
-        if(teamDTO.getName().isBlank())
-        {
+        if(teamDTO.getName().isBlank()){
             return ResponseEntity.badRequest().build();
         }
 
