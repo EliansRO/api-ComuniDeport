@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Registration;
 import com.comunideport.rest.Persistence.IRegistrationDAO;
 import com.comunideport.rest.Service.IRegistrationService;
 
+@Service
 public class RegistrationServiceImpl implements IRegistrationService {
 
     @Autowired

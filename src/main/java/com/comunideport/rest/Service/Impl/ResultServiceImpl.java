@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Result;
 import com.comunideport.rest.Persistence.IResultDAO;
 import com.comunideport.rest.Service.IResultService;
 
+@Service
 public class ResultServiceImpl implements IResultService {
 
     @Autowired

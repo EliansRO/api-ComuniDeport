@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Fixture;
 import com.comunideport.rest.Persistence.IFixtureDAO;
 import com.comunideport.rest.Service.IFixtureService;
 
+@Service
 public class FixtureServiceImpl implements IFixtureService {
 
     @Autowired

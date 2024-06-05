@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.Sport;
 import com.comunideport.rest.Persistence.ISportDAO;
 import com.comunideport.rest.Service.ISportService;
 
+@Service
 public class SportServiceImpl implements ISportService {
 
     @Autowired
