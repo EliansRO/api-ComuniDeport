@@ -14,4 +14,10 @@ public interface IUserService {
     void save(User user);
 
     void deleteById(Integer id);
+
+    Optional<User> findByUsername(String username);
+
+    User register(String username, String password);
+
+    User authenticate(String username, String password);
 }
