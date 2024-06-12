@@ -1,5 +1,9 @@
 package com.comunideport.rest.Auth;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.comunideport.rest.Entities.User;
@@ -15,10 +19,19 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginRequest request) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+
+        UserDetails user = userRepository.findByEmail(request.getUsername()).orElseThrow();
+        String token = jwtService.getToken(user);
+
+        return AuthResponse.builder()
+            .token(token)
+            .build();
     }
 
     public AuthResponse register(RegisterRequest request) {
@@ -30,7 +43,7 @@ public class AuthService {
             .date_birth(request.getDate_birth())
             .health_status(request.getHealth_status())
             .email(request.getEmail())
-            .password(request.getPassword())
+            .password(passwordEncoder.encode(request.getPassword()))
             .phone(request.getPhone())
             .address(request.getAddress())
             .city(request.getCity())
@@ -48,4 +61,7 @@ public class AuthService {
             .build();
     }
 
+    public void logout(String token) {
+        jwtService.invalidateToken(token);
+    }
 }
