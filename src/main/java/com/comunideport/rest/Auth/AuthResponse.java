@@ -1,0 +1,21 @@
+package com.comunideport.rest.Auth;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthResponse {
+    
+    String token;
+
+    private String message;
+
+    public AuthResponse(String message) {
+        this.message = message;
+    }
+}

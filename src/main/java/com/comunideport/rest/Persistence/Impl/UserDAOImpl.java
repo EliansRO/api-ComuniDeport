@@ -11,7 +11,7 @@ import com.comunideport.rest.Persistence.IUserDAO;
 import com.comunideport.rest.Repository.UserRepository;
 
 @Component
-public class UserDAOImpl implements IUserDAO{
+public class UserDAOImpl implements IUserDAO {
 
     @Autowired
     private UserRepository userRepository;
