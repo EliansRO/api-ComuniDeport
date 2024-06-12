@@ -2,32 +2,30 @@ package com.comunideport.rest.Auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.comunideport.rest.Entities.User;
 import com.comunideport.rest.Service.IUserService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final IUserService userService;
+    private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         try {
-            userService.authenticate(email, password);
-            return ResponseEntity.ok("Login successful");
+            return ResponseEntity.ok(authService.login(request));
         } catch (RuntimeException e) {
             return ResponseEntity.status(401).body(e.getMessage());
         }
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<Object> register(@RequestBody LoginRequest request) {
         try {
-            userService.register(email, password);
-            return ResponseEntity.ok("Registration successful");
+            return ResponseEntity.ok(authService.register(request));
+
         } catch (RuntimeException e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }

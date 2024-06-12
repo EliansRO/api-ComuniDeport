@@ -11,7 +11,7 @@ import com.comunideport.rest.Persistence.IUserDAO;
 import com.comunideport.rest.Repository.UserRepository;
 
 @Component
-public class UserDAOImpl implements IUserDAO{
+public class UserDAOImpl implements IUserDAO {
 
     @Autowired
     private UserRepository userRepository;
@@ -34,10 +34,5 @@ public class UserDAOImpl implements IUserDAO{
     @Override
     public void save(User user) {
         userRepository.save(user);
-    }
-
-    @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
     }
 }

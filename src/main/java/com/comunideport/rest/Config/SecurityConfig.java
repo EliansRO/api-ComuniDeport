@@ -2,8 +2,11 @@ package com.comunideport.rest.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import lombok.RequiredArgsConstructor;
@@ -15,23 +18,34 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+        http
+            .csrf(csrf -> 
+                csrf
+                .disable())
             .authorizeHttpRequests(authRequest -> 
                 authRequest
-                    .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("api/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
             .formLogin(form -> 
                 form
-                    .loginPage("/auth/login")
+                    .loginPage("/login")
+                    .failureUrl("/login?error")
                     .permitAll()
             )
             .logout(logout -> 
                 logout
-                    .logoutUrl("/auth/logout")
-                    .logoutSuccessUrl("/auth/login?logout")
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
                     .permitAll()
             )
-            .build();
+            .formLogin(Customizer.withDefaults());
+        
+        return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

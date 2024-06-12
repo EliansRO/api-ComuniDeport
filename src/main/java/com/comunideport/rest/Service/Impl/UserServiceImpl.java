@@ -1,5 +1,7 @@
 package com.comunideport.rest.Service.Impl;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,30 +41,4 @@ public class UserServiceImpl implements IUserService {
     public void save(User user) {
         iUserDAO.save(user);
     }
-
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return iUserDAO.findByUsername(username);
-    }
-
-    @Override
-    public User register(String username, String password) {
-        if (findByUsername(username).isPresent()) {
-            throw new RuntimeException("User already exists");
-        }
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
-        return iUserDAO.save(user);
-    }
-
-    @Override
-    public User authenticate(String username, String password) {
-        User user = findByUsername(username).orElseThrow(() -> new RuntimeException("Invalid credentials"));
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
-        }
-        return user;
-    }
 }
-

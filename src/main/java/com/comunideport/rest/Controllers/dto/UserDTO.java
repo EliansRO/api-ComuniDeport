@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.comunideport.rest.Entities.Registered;
+import com.comunideport.rest.Entities.Enum.RoleUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,7 +45,7 @@ public class UserDTO {
 
     private String profile_picture_url;
 
-    private String role;
+    private RoleUser role;
 
     private LocalTime date_joined;
 
